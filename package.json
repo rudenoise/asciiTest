@@ -1,0 +1,9 @@
+{
+  "name": "asciiTest",
+  "description": "Turn an image into ASCII art",
+  "devDependencies": {
+    "ascii": "^0.1.0",
+    "gyp": "^0.5.0",
+    "sharp": "^0.9.3"
+  }
+}
