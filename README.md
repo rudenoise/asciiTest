@@ -1,6 +1,7 @@
 Turn Images into ASCII with NodeJS
 ==================================
 
+```
  $$&&$oo;;;;;;;;!! !****                          
   *$$&!!!!!!;;!!!o$  $$o                          
       *&*!!!!!!o$&&&!                             
@@ -25,7 +26,7 @@ Turn Images into ASCII with NodeJS
             && &       $&  &                   &  
            *$ &        $                          
            o;          $&&                        
-                                                  
+```                                               
 
 
 To install/run:
