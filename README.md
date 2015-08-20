@@ -1,5 +1,4 @@
-Turn Images into ASCII with NodeJS
-==================================
+# Turn Images into ASCII with NodeJS
 
 ```
  $$&&$oo;;;;;;;;!! !****                          
@@ -29,21 +28,22 @@ Turn Images into ASCII with NodeJS
 ```                                               
 
 
-To install/run:
----------------
+## To install/run:
 
-Follow the instructions here
-https://github.com/Automattic/node-canvas/wiki/Installation---OSX
+### Directly on OSX
 
-Then
+Follow instructions from [node-canvas](https://github.com/Automattic/node-canvas/).
 
+Then:
 
-  ```sh
-  $ npm install 
-  ```
+```sh
+npm install
+node app/sheep/sheep.js
+```
 
-resize images
-https://github.com/lovell/sharp
+### Inside a docker container
 
-image to ascii
-https://www.npmjs.com/package/ascii
+```sh
+docker build -t asciiTest
+docker run asciiTest
+```
