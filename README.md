@@ -38,7 +38,8 @@ Then:
 
 ```sh
 npm install
-node app/sheep/sheep.js
+cd app/sheep/
+node sheep.js
 ```
 
 ### Inside a docker container

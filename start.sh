@@ -6,6 +6,4 @@ cd app/sheep/
 
 node sheep.js
 
-cd ../moon/
-
-node moon.js
+npm start
