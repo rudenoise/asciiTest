@@ -30,21 +30,9 @@
 
 ## To install/run:
 
-### Directly on OSX
-
-Follow instructions from [node-canvas](https://github.com/Automattic/node-canvas/).
-
-Then:
+Install docker-compose
 
 ```sh
-npm install
-cd app/sheep/
-node sheep.js
-```
-
-### Inside a docker container
-
-```sh
-docker build -t asciiTest
-docker run -p 80:80 ascii &
+docker-compose build
+docker-compose up
 ```
