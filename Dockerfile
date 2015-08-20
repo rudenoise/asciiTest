@@ -4,6 +4,7 @@ RUN mkdir -p /src/app
 
 WORKDIR /src
 
+ADD app.js app.js
 ADD ./app /src/app
 ADD package.json package.json
 

@@ -46,5 +46,5 @@ node sheep.js
 
 ```sh
 docker build -t asciiTest
-docker run asciiTest
+docker run -p 80:80 ascii &
 ```
