@@ -6,4 +6,8 @@ cd app/sheep/
 
 node sheep.js
 
-npm start
+cd ../
+
+ls
+
+nodemon -L app.js

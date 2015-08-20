@@ -4,7 +4,6 @@ RUN mkdir -p /src/app
 
 WORKDIR /src
 
-ADD app.js app.js
 ADD ./app /src/app
 ADD package.json package.json
 
@@ -15,7 +14,6 @@ ADD start.sh start.sh
 RUN chmod +x start.sh
 
 RUN ./setup.sh
-
 
 EXPOSE 80
 

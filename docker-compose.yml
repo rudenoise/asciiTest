@@ -1,0 +1,8 @@
+web:
+    hostname: ascii_web
+    domainname: ascii_web
+    build: ./nodeApp
+    volumes:
+        - ./nodeApp/app:/src/app/
+    ports:
+        - "80:80"
