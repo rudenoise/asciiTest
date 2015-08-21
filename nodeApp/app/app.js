@@ -30,19 +30,23 @@ function respond(req, res, next) {
             next();
         });
 
-    //request('http://www.fhpmodels.reading.ac.uk/800px-Lleyn_sheep1.jpg')
-    request('https://avatars1.githubusercontent.com/u/174627?v=3&s=460')
+    //var imgURL = 'http://www.fhpmodels.reading.ac.uk/800px-Lleyn_sheep1.jpg';
+    var imgURL = 'https://avatars1.githubusercontent.com/u/174627?v=3&s=460';
+    request(imgURL)
         .pipe(transformer)
         .pipe(fs.createWriteStream('sheep.jpg'))
         .on('close', function () {
-            console.log(arguments);
+
             var pic = new Ascii('sheep.jpg');
+
             pic.convert(function(err, result) {
-                console.log(result.replace(/#/g, ' '));
+                console.log('converted', imgURL);
+
                 res.send({
-                    title: 'sheep',
+                    url: imgURL,
                     img: result.replace(/#/g, ' ')
                 });
+
                 next();
             });
         });
