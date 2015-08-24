@@ -11,7 +11,7 @@ function respond(req, res, next) {
     
     var imgURL = 'https://avatars1.githubusercontent.com/u/174627?v=3&s=460';
     
-    if (req.body.hasOwnProperty('url')) {
+    if (req.hasOwnProperty('body') && req.body.hasOwnProperty('url')) {
         imgURL = req.body.url;
     }
 
