@@ -4,7 +4,7 @@ RUN mkdir -p /src/app
 
 WORKDIR /src
 
-ADD ./app /src/app
+ADD ./app/* /src/app/
 ADD package.json package.json
 
 ADD setup.sh setup.sh

@@ -4,34 +4,27 @@ var request = require('request');
 var Ascii = require('ascii');
 var fs = require('fs');
 
-var download = function(uri, filename, callback){
-    request.head(uri, function(err, res, body){
-        
-        console.log('content-type:', res.headers['content-type']);
-        console.log('content-length:', res.headers['content-length']);
-
-        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-    });
-};
-
-
 
 function respond(req, res, next) {
     
-    console.log('request made');
+    console.log(req.body);
     
+    var imgURL = 'https://avatars1.githubusercontent.com/u/174627?v=3&s=460';
+    
+    if (req.body.hasOwnProperty('url')) {
+        imgURL = req.body.url;
+    }
+
     var transformer = sharp()
         .resize(300)
         .on('error', function(err) {
             console.log(err);
-            res.send(400, {
-                response: 'hello ' + req.params.name
+            res.send(500, {
+                error: err
             });
             next();
         });
 
-    //var imgURL = 'http://www.fhpmodels.reading.ac.uk/800px-Lleyn_sheep1.jpg';
-    var imgURL = 'https://avatars1.githubusercontent.com/u/174627?v=3&s=460';
     request(imgURL)
         .pipe(transformer)
         .pipe(fs.createWriteStream('sheep.jpg'))
@@ -53,8 +46,22 @@ function respond(req, res, next) {
 }
 
 var server = restify.createServer();
-server.get('/', respond);
+
+server.use(restify.bodyParser({ mapParams: false }));
+
 server.head('/', respond);
+server.get('/', respond);
+
+server.post('/', function respondToUrl(req, res, next) {
+    console.log(req.body);
+    if (req.body.hasOwnProperty('url')) {
+        return respond(req, res, next);
+    }
+    return res.send(400, {
+        err: 'malformed request'
+    })
+});
+
 
 server.listen(80, function() {
     console.log('%s listening at %s', server.name, server.url);
