@@ -3,6 +3,7 @@ var sharp = require('sharp');
 var request = require('request');
 var Ascii = require('ascii');
 var fs = require('fs');
+var Guid = require('guid');
 
 
 function respond(req, res, next) {
@@ -25,14 +26,21 @@ function respond(req, res, next) {
             next();
         });
 
+    var tmpFile = '/tmp/' + Guid.raw();
+
     request(imgURL)
         .pipe(transformer)
-        .pipe(fs.createWriteStream('sheep.jpg'))
+        .pipe(fs.createWriteStream(tmpFile))
         .on('close', function () {
 
-            var pic = new Ascii('sheep.jpg');
+            var pic = new Ascii(tmpFile);
 
             pic.convert(function(err, result) {
+                
+                fs.unlink(tmpFile, function () {
+                    console.log('deleted:', tmpFile);
+                });
+
                 console.log('converted', imgURL);
 
                 res.send({

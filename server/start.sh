@@ -1,5 +1,7 @@
 #! /bin/bash
 
+npm install
+
 echo "./"
 ls -la ./
 echo "./app/"
