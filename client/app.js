@@ -11,7 +11,8 @@ client.get('/', function (err, req, res, obj) {
         console.error(err);
         return;
     };
-    console.log('%j', obj);
+    //console.log('%j', obj);
+    console.log(obj.img);
 });
 
 egPOST = {
@@ -23,5 +24,5 @@ client.post('/', egPOST, function (err, req, res, obj) {
         console.error(err);
         return;
     };
-    console.log('%j', obj);
+    console.log(obj.img);
 });
