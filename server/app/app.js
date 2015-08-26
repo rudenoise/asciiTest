@@ -10,14 +10,23 @@ function respond(req, res, next) {
     
     console.log(req.body);
     
+    var body;
     var imgURL = 'https://avatars1.githubusercontent.com/u/174627?v=3&s=460';
+    var width = 300;
     
-    if (req.hasOwnProperty('body') && req.body.hasOwnProperty('url')) {
-        imgURL = req.body.url;
+    if (req.hasOwnProperty('body')) {
+        body = req.body;
+        if (body.hasOwnProperty('url')) {
+            imgURL = body.url;
+        }
+        if (body.hasOwnProperty('width')) {
+            width = typeof body.width === 'number' && !isNaN(body.width) ?
+                body.width : width;
+        }
     }
 
     var transformer = sharp()
-        .resize(300)
+        .resize(width)
         .on('error', function(err) {
             console.log(err);
             res.send(500, {
