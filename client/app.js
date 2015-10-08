@@ -29,7 +29,6 @@ client.post('/', egPOST, function (err, req, res, obj) {
 });
 
 egPOST = {
-    //url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Jewel_of_the_Solar_System.jpg/800px-Jewel_of_the_Solar_System.jpg',
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/PIA07738_Tethys_mosaic_contrast-enhanced.jpg/600px-PIA07738_Tethys_mosaic_contrast-enhanced.jpg',
     width: 1000
 }
